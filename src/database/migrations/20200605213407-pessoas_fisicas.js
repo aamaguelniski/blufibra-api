@@ -1,0 +1,64 @@
+'use strict';
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('pessoas_fisicas', 
+      { 
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        primeiro_nome: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        ultimo_nome: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        cpf: {
+          type: Sequelize.STRING(14),
+          allowNull: false,
+          unique: true,
+        },
+        re: {
+          type: Sequelize.STRING(14),
+          allowNull: false,
+        },
+        id_cliente: {
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'clientes',
+            key: 'id',
+          }
+        },
+        data_nascimento: {
+          type: Sequelize.DATE,
+          allowNull:false,
+        },
+        nome_pai: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        nome_mae: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        },
+        updated_at: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        }          
+      }
+    );
+  },
+
+  down: (queryInterface, Sequelize) => {
+      return queryInterface.dropTable('pessoas_fisicas');
+  }
+};
