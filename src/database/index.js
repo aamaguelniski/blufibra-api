@@ -15,7 +15,10 @@ class Database {
    }
 
    init(){
-      this.connection = new Sequelize(databaseConfig);
+      this.connection = new Sequelize('blufibra-dev', 'postgres', 'A7wQMBgXGTzEQm5L', {
+         dialect: 'postgres',
+         host: '186.232.154.26'
+      });
 
       models.map(model => model.init(this.connection)); 
    }

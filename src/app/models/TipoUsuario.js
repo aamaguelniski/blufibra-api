@@ -8,6 +8,7 @@ class TipoUsuario extends Model {
          },
          {
             sequelize,
+            underscored: true,
             modelName: 'tipo_usuario'
          }
       )

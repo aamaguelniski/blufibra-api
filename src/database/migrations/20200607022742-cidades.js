@@ -2,16 +2,26 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.createTable('tipo_usuarios', { 
+      return queryInterface.createTable('cidades', 
+      { 
         id: {
           type: Sequelize.INTEGER,
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
         },
-        descricao: {
-          type: Sequelize.STRING,
-          allowNull: false,          
+        nome: {
+          type: Sequelize.STRING(128),
+          allowNull: false,
+        },
+        codigo_ibge: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          unique: true,
+        },
+        uf: {
+          type: Sequelize.STRING(2),
+          allowNull: false,
         },
         created_at: {
           type: Sequelize.DATE,
@@ -21,10 +31,11 @@ module.exports = {
           type: Sequelize.DATE,
           allowNull: false,
         }
+         
       });
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.dropTable('tipo_usuarios');
+      return queryInterface.dropTable('cidades');
   }
 };

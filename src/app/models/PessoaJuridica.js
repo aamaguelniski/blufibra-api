@@ -1,11 +1,13 @@
 import Sequelize, { Model } from "sequelize";
 
-class Usuario extends Model {
+class PessoaJuridica extends Model {
    static init(sequelize){
       super.init(
          {
-            nome: Sequelize.STRING,
-            password_hash: Sequelize.STRING,
+            razao_social: Sequelize.STRING,
+            nome_fantasia: Sequelize.STRING,
+            cnpj: Sequelize.STRING,
+            ie: Sequelize.STRING,            
          },
          {
             sequelize,
@@ -16,4 +18,4 @@ class Usuario extends Model {
    }
 }
 
-export default Usuario;
+export default PessoaJuridica;

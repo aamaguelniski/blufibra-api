@@ -14,6 +14,7 @@ class PessoaFisica extends Model {
          },
          {
             sequelize,
+            underscored: true,
             modelName: 'pessoa_fisica'
          }
       );

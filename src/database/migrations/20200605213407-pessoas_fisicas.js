@@ -23,16 +23,10 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
-        re: {
+        rg: {
           type: Sequelize.STRING(14),
           allowNull: false,
-        },
-        id_cliente: {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'clientes',
-            key: 'id',
-          }
+          unique: true
         },
         data_nascimento: {
           type: Sequelize.DATE,

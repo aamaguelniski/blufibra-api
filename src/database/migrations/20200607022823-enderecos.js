@@ -2,18 +2,30 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.createTable('clientes', 
+      return queryInterface.createTable('enderecos', 
       { 
         id: {
           type: Sequelize.INTEGER,
-          allowNull: false,
           primaryKey: true,
           autoIncrement: true,
-        },
-        ativo: {
-          type: Sequelize.BOOLEAN,
           allowNull: false,
-          defaultValue: true,
+        },
+        endereco: {
+          type: Sequelize.STRING(128),
+          allowNull: false,
+        },
+        numero: {
+          type: Sequelize.INTEGER,
+        },
+        bairro: {
+          type: Sequelize.STRING(128),
+        },
+        cep: {
+          type: Sequelize.STRING(10),
+          allowNull: false,
+        },
+        referencia: {
+          type: Sequelize.STRING(255),
         },
         created_at: {
           type: Sequelize.DATE,
@@ -27,6 +39,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.dropTable('clientes');
+      return queryInterface.dropTable('enderecos');
   }
 };

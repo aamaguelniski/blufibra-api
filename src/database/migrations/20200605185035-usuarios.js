@@ -14,12 +14,9 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      tipo_usuario: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'tipo_usuarios',
-          key: 'id'
-        }
+      password_hash: {
+        type: Sequelize.INTEGER(64),
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
