@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import Cliente from './Cliente';
 
 class Endereco extends Model {
    static inti(sequelize){
@@ -15,7 +16,11 @@ class Endereco extends Model {
             underscored: true,
             modelName: 'cliente',
          }
-      )
+      );
+
+      // Associação de Endereço com Cliente
+      // Cada Endereço carrega o ID do seu respectivo Cliente
+      this.hasOne(Cliente, {foreignKey: 'cliente_id'});
    }
 }
 

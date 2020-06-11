@@ -10,12 +10,12 @@ module.exports = {
         primaryKey: true,
       },
       username: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(64),
         allowNull: false,
         unique: true,
       },
       password_hash: {
-        type: Sequelize.INTEGER(64),
+        type: Sequelize.STRING(64),
         allowNull: false,
       },
       created_at: {

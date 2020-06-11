@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import Cliente from "./Cliente";
 
 class PessoaJuridica extends Model {
    static init(sequelize){
@@ -14,7 +15,11 @@ class PessoaJuridica extends Model {
             underscored: true,
             modelName: 'usuario'
          }
-      )
+      );
+
+      // Associação de PessoaJuridica com Cliente
+      // Cada PessoasJuridica carrega a ID de seu respectivo cadastro de Cliente
+      this.hasOne(Cliente, {foreignKey: 'cliente_id'});
    }
 }
 
