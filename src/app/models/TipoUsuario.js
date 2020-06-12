@@ -14,8 +14,11 @@ class TipoUsuario extends Model {
          }
       );
 
-      // Associação de TipoUsuario com Usuario
-      // Cada Usuario carrega o ID do seu TipoUsuario
+      // ASSOCIATIONS
+      //----------------------------------------------------------
+
+      // Association between Usuario and TipoUsuario
+      // Usuario has the FK field
       this.hasMany(Usuario, {foreignKey: 'tipo_usuario_id'});    
    };   
 }

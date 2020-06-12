@@ -15,12 +15,15 @@ class Cliente extends Model {
          }
       );
 
-      // Associação de Cliente com Usuario
-      // Cada Cliente carrega a ID de seu respectivo Usuario no sistema
+      // ASSOCIATIONS
+      //----------------------------------------------------------
+
+      // Association between Cliente and Usuario
+      // Cliente has the FK field
       this.belongsTo(Usuario, {foreignKey: 'usuario_id'});
 
-      // Associação de Cliente com PessoaFisca
-      // Cada PessoaFisica carrega a ID de seu respectivo cadastro de Cliente
+      // Association between Cliente and PessoaFisica
+      // PessoaFisica has the FK field
       this.hasMany(PessoaFisica, {foreignKey: 'cliente_id'});
 
    }

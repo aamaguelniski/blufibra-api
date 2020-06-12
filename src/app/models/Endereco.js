@@ -1,8 +1,10 @@
 import Sequelize, { Model } from 'sequelize';
 import Cliente from './Cliente';
+import TipoContato from './TipoContato';
+import Cidade from './Cidade';
 
 class Endereco extends Model {
-   static inti(sequelize){
+   static init(sequelize){
       super.init(
          {
             endereco: Sequelize.STRING,
@@ -14,13 +16,24 @@ class Endereco extends Model {
          {
             sequelize,
             underscored: true,
-            modelName: 'cliente',
+            modelName: 'endereco',
          }
       );
 
-      // Associação de Endereço com Cliente
-      // Cada Endereço carrega o ID do seu respectivo Cliente
-      this.hasOne(Cliente, {foreignKey: 'cliente_id'});
+      // ASSOCIATIONS
+      //----------------------------------------------------------
+
+      // Association between Cliente and Endereco
+      // Endereco has the FK field
+      this.belongsTo(Cliente, {foreignKey: 'cliente_id'});
+
+      // Association between TipoContato and Endereco
+      // Endereco has the FK field
+      this.belongsTo(TipoContato, {foreignKey: 'tipo_contato_id'});
+
+      // Association between Cidade and Endereco
+      // Endereco has the FK field
+      this.belongsTo(Cidade, {foreignKey: 'cidade_id'});
    }
 }
 

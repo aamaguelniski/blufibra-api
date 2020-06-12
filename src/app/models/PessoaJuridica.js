@@ -17,8 +17,11 @@ class PessoaJuridica extends Model {
          }
       );
 
-      // Associação de PessoaJuridica com Cliente
-      // Cada PessoasJuridica carrega a ID de seu respectivo cadastro de Cliente
+      // ASSOCIATIONS
+      //----------------------------------------------------------
+
+      // Association between Cliente and PessoaJuridica
+      // PessoaJuridica has the FK field
       this.hasOne(Cliente, {foreignKey: 'cliente_id'});
    }
 }
