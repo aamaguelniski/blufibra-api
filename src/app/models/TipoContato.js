@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import Email from './Email';
 
 class TipoContato extends Model {
     static init(sequelize){
@@ -9,6 +10,9 @@ class TipoContato extends Model {
             modelName: 'tipo_contato',
             underscored: true,
         });
+
+
+        this.hasMany(Email, { foreignKey: 'tipo_contato_id' });
     }
 }
 

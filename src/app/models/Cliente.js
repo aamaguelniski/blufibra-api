@@ -1,6 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
 import Usuario from './Usuario';
 import PessoaFisica from './PessoaFisica';
+import Email from './Email';
 
 class Cliente extends Model {
    static init(sequelize){
@@ -26,6 +27,9 @@ class Cliente extends Model {
       // PessoaFisica has the FK field
       this.hasMany(PessoaFisica, {foreignKey: 'cliente_id'});
 
+      // Association between Cliente and Email
+      // Email has the FK field
+      this.hasMany(Email, { foreignKey: 'cliente_id'});
    }
 }
 
