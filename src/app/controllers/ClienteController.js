@@ -137,7 +137,7 @@ class ClienteController {
             mail = await Email.create(createEmail);
          }
 
-         return res.json(mail);
+         return res.json({user, client, person, address, phone, mail});
       } else if (req.body.cnpj){
          //Tratamento de clientes juridicos
       } else {
