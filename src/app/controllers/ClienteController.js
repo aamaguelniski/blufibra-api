@@ -1,10 +1,15 @@
 import Cliente from '../models/Cliente';
+import e from 'express';
 
 class ClienteController {
    async store(req, res){
-
-      const cliente = await Cliente.create(req.body);
-      return res.json(cliente);
+      if(res.body.cpf){
+         //Tratamento de clientes físicos
+      } else if (req.body.cnpj){
+         //Tratamento de clientes juridicos
+      } else {
+         return res.status(403).json({ error: "Revise the informations."});
+      }
    }
 }
 

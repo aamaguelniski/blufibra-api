@@ -13,7 +13,7 @@ class PessoaJuridica extends Model {
          {
             sequelize,
             underscored: true,
-            modelName: 'usuario'
+            modelName: 'pessoa_juridica'
          }
       );
 
@@ -22,7 +22,7 @@ class PessoaJuridica extends Model {
 
       // Association between Cliente and PessoaJuridica
       // PessoaJuridica has the FK field
-      this.hasOne(Cliente, {foreignKey: 'cliente_id'});
+      this.belongsTo(Cliente, {foreignKey: 'cliente_id'});
    }
 }
 

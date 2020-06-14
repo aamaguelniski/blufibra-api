@@ -9,8 +9,32 @@ class TipoUsuarioController {
          return res.status(400).json({ error: 'User Type already exist.'})
       }
 
-      const tipo = await TipoUsuario.create(req.body);
-      return res.json(tipo);
+      const { id, descricao } = await TipoUsuario.create(req.body);
+      return res.json({ id, descricao });
+   }
+
+   async update(req, res){
+      const { userTypeId } = req.body;
+
+      const usertype = await TipoUsuario.findByPk(userTypeId);
+      if(!usertype){
+         return res.status(400).json({ message: 'User Type not found.'});
+      }
+      const { id, descricao } = await usertype.update(req.body);
+
+      return res.json({ id, descricao });
+   }
+
+   async delete(req, res){
+      const { userTypeId } = req.body;
+
+      const result = await TipoUsuario.destroy({where: { id: userTypeId }});
+
+      if(result){
+         return res.json({ message: 'Successfully deleted.'});
+      } else {
+         return res.json({ message: 'Failed to delete.'});
+      }      
    }
 }
 
