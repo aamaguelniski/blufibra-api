@@ -1,8 +1,25 @@
 import TipoUsuario from '../models/TipoUsuario';
 
 class TipoUsuarioController {
-   async store(req, res){
+   async query(req, res){
+      const tipos_usuario = await TipoUsuario.findAll({
+         attributes: ['id', 'descricao']
+      });
 
+      return res.json(tipos_usuario);
+   }
+
+   async get(req, res){
+      const tipo_usuario = await TipoUsuario.findOne({
+         where: {
+            id: req.id
+         }
+      });
+
+      return res.json(tipo_usuario);
+   }
+
+   async store(req, res){
       const exist = await TipoUsuario.findOne({ where: { descricao: req.body.descricao }});
 
       if (exist) {

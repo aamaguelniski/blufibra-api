@@ -20,9 +20,12 @@ const routes = new Router();
 // CREATION ROUTES
 // --------------------------------------------------------//
 routes.post('/session', SessionController.store);
-
-routes.use(authMidleware);
+// Tipos de usuário
 routes.post('/user', UsuarioController.store);
+
+
+// Rotas com middleware de autenticação
+routes.use(authMidleware);
 routes.post('/usertype', TipoUsuarioController.store);
 routes.post('/legalperson', PessoaJuridicaController.store);
 routes.post('/client', ClienteController.store);
