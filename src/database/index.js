@@ -10,8 +10,17 @@ import Endereco from '../app/models/Endereco';
 import PessoaJuridica from '../app/models/PessoaJuridica';
 import Telefone from '../app/models/Telefone';
 import Email from '../app/models/Email';
+import Colaborador from '../app/models/Colaborador';
+import Plano from '../app/models/Plano';
+import Lead from '../app/models/Lead';
+import Opportunity from '../app/models/Opportunity';
+import Produto from '../app/models/Produto';
+import Equipamento from '../app/models/Equipamento'
 
-const models = [Usuario, PessoaFisica, Email, Cliente, TipoUsuario, TipoContato, Cidade, Base, Endereco, PessoaJuridica, Telefone];
+const models = [Usuario, PessoaFisica, Email, Cliente, TipoUsuario, TipoContato, 
+   Cidade, Base, Endereco, PessoaJuridica, Telefone, Colaborador, Plano, Lead, Opportunity,
+   Produto, Equipamento  
+];
 
 class Database {
    constructor(){
