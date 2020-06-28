@@ -2,6 +2,7 @@ import Sequelize, { Model } from 'sequelize';
 import Lead from './Lead';
 import Cliente from './Cliente';
 import Plano from './Plano';
+import Colaborador from './Colaborador';
 
 class Opportunity extends Model {
     static init(sequelize){
@@ -19,6 +20,10 @@ class Opportunity extends Model {
 
         // ASSOCIAÇÕES
         //-------------------------------------------------------
+
+        // Associação entre Opportunity e Colaborador
+        // Opportunity carrega a FK
+        this.hasOne(Colaborador, { foreignKey: 'colaborador_id' });
 
         // Associação entre Oportunity e Lead
         // Oportunity carrega a FK

@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=EVELOPMENT nodemon src/server.js",
+    "dev": "cross-env NODE_ENV=DEVELOPMENT nodemon src/server.js",
     "dev:debug": "nodemon --inspect src/server.js"
   },
   "dependencies": {

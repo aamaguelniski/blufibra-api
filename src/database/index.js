@@ -16,10 +16,11 @@ import Lead from '../app/models/Lead';
 import Opportunity from '../app/models/Opportunity';
 import Produto from '../app/models/Produto';
 import Equipamento from '../app/models/Equipamento'
+import Fonte from '../app/models/Fonte';
 
 const models = [Usuario, PessoaFisica, Email, Cliente, TipoUsuario, TipoContato, 
    Cidade, Base, Endereco, PessoaJuridica, Telefone, Colaborador, Plano, Lead, Opportunity,
-   Produto, Equipamento  
+   Produto, Equipamento, Fonte
 ];
 
 class Database {

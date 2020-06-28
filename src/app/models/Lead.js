@@ -1,5 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import Colaborador from './Colaborador';
 
 class Lead extends Model {
     static init(sequelize){
@@ -18,13 +17,6 @@ class Lead extends Model {
                 modelName: 'lead',
             }
         );
-
-        // ASSOCIAÇÕES
-        //-------------------------------------------------------
-
-        // Associação entre Lead e Colaborador
-        // Lead carrega a FK
-        this.hasOne(Colaborador, { foreignKey: 'colaborador_id' });
     }
 }
 
