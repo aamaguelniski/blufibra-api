@@ -1,26 +1,14 @@
 import Colaborador from '../models/Colaborador';
 import Usuario from '../models/Usuario';
 import UsuarioController from '../controllers/UsuarioController';
-require('./UsuarioController');
 
 class ColaboradorController {
 
-  // busca específica
-  async get(req, res){
-    const colaborador =  Colaborador.findAll({
-      where: {
-        id: req.body.id,
-      }
-    });
-
-    return req.json(colaborador);
-  }
-
-  // busca todos
+  // QUERY FUNCTION
   async query(req, res){
     const colaborador = Colaborador.findAll({
       attributes: [
-        'id', 
+        'id',
         'primeiro_nome',
         'ultimo_nome',
         'telefone',
@@ -31,59 +19,84 @@ class ColaboradorController {
     return res.json(colaborador);
   }
 
-  //cria um Colaborador
+  // GET
+  async get(req, res){
+    const colaborador =  Colaborador.findOne({
+      where: {
+        id: req.body.id,
+      }
+    });
+
+    return req.json(colaborador);
+  }
+
+  // CREATE
   async post(req, res){
+    console.log(req.body);
+    // VALIDAÇÕES
 
-    //VALIDAÇÕES
-    //--------------------------------------------------------------------------
-
-    //verifica se usuário já existe
-    const existUser = await Usuario.findOne({
+    // verifica se usuário já existe
+    const userExists = await Usuario.findOne({
       where: {
         username: req.body.username,
       }
     });
 
-    if(existUser){
+    if(userExists){
       return res.status(401).json({ 
-        error: 'Usuário já registrado no sistema.'
+        error: 'Usuário já registrado no sistema'
       });
     }
 
-    //verifica se o telefone já existe
-    const telefone = await Colaborador.findOne({
-      where: {
-        telefone: req.body.telefone,
-      }
-    });
+    // //verifica se o telefone já existe
+    // const celular = await Colaborador.findOne({
+    //   where: {
+    //     telefone: req.body.celular,
+    //   }
+    // });
 
-    if(telefone){
-      return res.status(401).json({ 
-        error: 'Um colabordor já está registrado com esse número de telefone.'
-      })
-    }
+    // if(celular){
+    //   return res.status(401).json({ 
+    //     error: 'Um colabordor já está registrado com esse número de telefone.'
+    //   })
+    // }
 
-    // verifica se o email já exite
-    const email = await Colaborador.findOne({
-      where: {
-        email: req.body.email,
-      }
-    });
+    // // verifica se o email já exite
+    // const email = await Colaborador.findOne({
+    //   where: {
+    //     email: req.body.email,
+    //   }
+    // });
 
-    if(email){
-      return res.status(401).json({ 
-        error: 'Um colaborador já está registrado com esse e-mail.'
-      })
-    }
+    // if(email){
+    //   return res.status(401).json({ 
+    //     error: 'Um colaborador já está registrado com esse e-mail.'
+    //   })
+    // }
 
     //CRIAÇÃO
     //--------------------------------------------------------------------------
 
-    //cria o usuario
-    const usuario = await UsuarioController.store();
+    // cria o usuario
+    const user = await UsuarioController.store(req, res);
 
-    req.body.usuario_id = usuario.id;
+    if (user){
+      // cria colaborador
+      const { nome, sobrenome, email, celular } = await Colaborador.create({
+        nome: req.body.nome,
+        sobrenome: req.body.sobrenome,
+        email: req.body.email,
+        celular: req.body.celular,
+        tipo_colaborador_id: req.body.tipo_colaborador_id });
 
+      if (colaborador){
+        return res.json({ username, nome, sobrenome, email, celular });
+      } else {
+        return res.status(400).json({ error: 'Erro ao criar colaborador' });
+      }
+    } else {
+      return res.status(400).json({ error: 'Erro ao criar usuário' });
+    }
   }
 }
 

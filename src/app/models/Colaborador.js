@@ -5,14 +5,14 @@ class Colaborador extends Model {
     static init(sequelize){
         super.init(
             {
-                primeiro_nome: Sequelize.STRING,
-                ultimo_nome: Sequelize.STRING,
+                nome: Sequelize.STRING,
+                sobrenome: Sequelize.STRING,
                 email: Sequelize.STRING,
-                telefone: Sequelize.STRING,
+                celular: Sequelize.STRING,
             }, {
                 sequelize,
                 underscored: true,
-                modelName: 'colaboradore'
+                modelName: 'colaborador'
             }
         );
 

@@ -18,7 +18,7 @@ class UsuarioController {
 
       // Verifica se é cliente (7 = cliente)
       if (tipo_usuario.id != 7){
-         const logged_user_id = req.body.logged_uer_id;
+         const logged_user_id = req.body.logged_user_id;
 
          // Verifica se a requisição possui usuário
          if (!logged_user_id){

@@ -6,15 +6,15 @@ module.exports = {
       { 
         id: {
           type: Sequelize.INTEGER,
-          primarikey: true,
+          primarykey: true,
           autoIncrement: true,
           alowNull: false,
         },
-        primeiro_nome: {
+        nome: {
           type: Sequelize.STRING(128),
           allowNull: false,
         },
-        ultimo_nome: {
+        sobrenome: {
           type: Sequelize.STRING(128),
           allowNull: false,
         },
@@ -23,7 +23,7 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
-        telefone: {
+        celular: {
           type: Sequelize.STRING(14),
           allowNull: false,
           unique: true,
