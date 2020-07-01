@@ -2,13 +2,13 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.createTable('colaboradores', 
+      return queryInterface.createTable('colaborador', 
       { 
         id: {
           type: Sequelize.INTEGER,
-          primarykey: true,
+          primaryKey: true,
           autoIncrement: true,
-          alowNull: false,
+          allowNull: false,
         },
         nome: {
           type: Sequelize.STRING(128),
@@ -28,6 +28,12 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
+        endereco: {
+          type: Sequelize.STRING(128),
+          allowNull: false
+        },
+        numero: Sequelize.INTEGER,
+        bairro: Sequelize.STRING,
         created_at: {
           type: Sequelize.DATE,
           allowNull: false,
@@ -40,6 +46,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.dropTable('colaboradores');
+      return queryInterface.dropTable('colaborador');
   }
 };
