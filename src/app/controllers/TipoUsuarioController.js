@@ -20,24 +20,26 @@ class TipoUsuarioController {
    }
 
    async store(req, res){
-      const exist = await TipoUsuario.findOne({ where: { descricao: req.body.descricao }});
+      const userTypeExists = await TipoUsuario.findOne({ where: { descricao: req.body.descricao }});
 
-      if (exist) {
-         return res.status(400).json({ error: 'User Type already exist.'})
+      if (userTypeExists) {
+         return res.status(400).json({ error: 'Tipo de usuário já existe'})
       }
 
       const { id, descricao } = await TipoUsuario.create(req.body);
+
       return res.json({ id, descricao });
    }
 
    async update(req, res){
       const { userTypeId } = req.body;
 
-      const usertype = await TipoUsuario.findByPk(userTypeId);
-      if(!usertype){
-         return res.status(400).json({ message: 'User Type not found.'});
+      const userType = await TipoUsuario.findByPk(userTypeId);
+      
+      if(!userType){
+         return res.status(400).json({ message: 'Tipo de usuário não encontrado'});
       }
-      const { id, descricao } = await usertype.update(req.body);
+      const { id, descricao } = await userType.update(req.body);
 
       return res.json({ id, descricao });
    }
