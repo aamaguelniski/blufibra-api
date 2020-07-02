@@ -9,10 +9,10 @@ class ColaboradorController {
     const colaborador = Colaborador.findAll({
       attributes: [
         'id',
-        'primeiro_nome',
-        'ultimo_nome',
-        'telefone',
+        'nome',
+        'sobrenome',
         'email',
+        'celular',
       ]
     });
 
@@ -31,16 +31,18 @@ class ColaboradorController {
   }
 
   // CREATE
-  async post(req, res){
+  async store(req, res){
     console.log(req.body);
     // VALIDAÇÕES
-
+    
     // verifica se usuário já existe
     const userExists = await Usuario.findOne({
       where: {
         username: req.body.username,
       }
     });
+
+    console.log("Usuário procurado");
 
     if(userExists){
       return res.status(401).json({ 

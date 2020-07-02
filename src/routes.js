@@ -15,24 +15,30 @@ import EnderecoController from './app/controllers/EnderecoController';
 import TelefoneController from './app/controllers/TelefoneController';
 import EmailController from './app/controllers/EmailController';
 import ColaboradorController from './app/controllers/ColaboradorController';
+import TipoColaboradorController from './app/controllers/TipoColaboradorController';
 
-//IMPORTAÇÃO DE MIDLEWARES
+//IMPORTAÇÃO DE MIDDLEWARES
 //------------------------------------------------------------------------------
-import authMidleware from './app/middlewares/auth';
-import userMidleware from './app/middlewares/createUser';
+import authMiddleware from './app/middlewares/auth';
+import userMiddleware from './app/middlewares/createUser';
 
 const routes = new Router();
 
 // CREATION ROUTES
 // -----------------------------------------------------------------------------
 routes.post('/session', SessionController.store);
-// Tipos de usuário
+// Usuário
 routes.post('/user', UsuarioController.store);
+// Tipo de usuário
+routes.post('/tipousuario', TipoUsuarioController.store);
+// Tipos de colaborador
+routes.post('/tipocolaborador', TipoColaboradorController.store);
+// Colaborador
+routes.post('/colaborador', ColaboradorController.store);
 
 
 // Rotas com middleware de autenticação
-routes.use(authMidleware);
-routes.post('/usertype', TipoUsuarioController.store);
+routes.use(authMiddleware);
 routes.post('/legalperson', PessoaJuridicaController.store);
 routes.post('/client', ClienteController.store);
 routes.post('/person', PessoaFisicaController.store);
@@ -42,7 +48,6 @@ routes.post('/bases', BaseController.store);
 routes.post('/address', EnderecoController.store);
 routes.post('/phone', TelefoneController.store);
 routes.post('/email', EmailController.store);
-routes.post('/collaborator', userMidleware, ColaboradorController.post);
 
 // UPDATE ROUTES
 // -----------------------------------------------------------------------------

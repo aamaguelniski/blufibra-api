@@ -2,10 +2,35 @@ import Usuario from '../models/Usuario';
 import TipoUsuario from '../models/TipoUsuario';
 
 class UsuarioController {
+   async query(req, res){
+      const usuarios = Usuario.findAll({
+         attributes: ["username"]
+      });
+
+      return res.json(usuarios);
+   }
+
+   async get(req, res){
+      const usuario = Usuario.findOne({
+         where: {
+            id: req.body.id
+         }
+      });
+
+      if (usuario){
+         return res.json(usuario);
+      } else {
+         return res.status(400).json({
+            error: "Usuário não encontrado"
+         });
+      }
+   }
+
    async store(req, res){
+      console.log(req.body);
       const tipo_usuario = await TipoUsuario.findOne({
          where: {
-            id: tipo_usuario_id
+            id: req.body.tipo_usuario_id
          }
       });
 
@@ -16,47 +41,47 @@ class UsuarioController {
          });
       }
 
-      // Verifica se é cliente (7 = cliente)
-      if (tipo_usuario.id != 7){
-         const logged_user_id = req.body.logged_user_id;
+      // Verifica se é colaborador (1 = colaborador)
+      if (tipo_usuario.id == 1){
+         // Verifica se não é consultor de vendas
+         if (req.body.tipo_colaborador_id != 3){
+            // Verifica se existe usuário logado
+            if (!req.body.logged_user_id){
+               return res.status(400).json({ 
+                  error: 'Necessário estar logado para criar este usuário'
+               });
+            } else {
+               const logged_user = Usuario.findOne({
+                  where: {
+                     id: logged_user_id
+                  }
+               });
 
-         // Verifica se a requisição possui usuário
-         if (!logged_user_id){
-            return res.status(400).json({
-               error: 'Necessário estar logado para criar este usuário'
-            });
-         } else {
-            const logged_user = Usuario.findOne({
-               where: {
-                  id: logged_user_id
+               // Verifica se usuário logado existe
+               if (!logged_user){
+                  return res.status(400).json({
+                     error: 'Usuário logado não encontrado'
+                  });
                }
-            });
 
-            // Verifica se usuário existe
-            if (!logged_user){
-               return res.status(400).json({
-                  error: 'Usuário logado não existe'
-               });
-            }
+               // Necessário verificar se usuário é administrador
 
-            // Verifica se é administrador do sistema
-            if (logged_user.tipo_usuario_id != 4){
-               return res.status(400).json({
-                  error: 'Usuário logado não é administrador'
-               });
             }
          }
+
       }
 
       const exist = await Usuario.findOne({ where: { username: req.body.username }});
 
       if (exist) {
-         return res.status(400).json({ error: 'Usuário já existe'});
+         return res.status(400).json({
+            error: 'Usuário já existe'
+         });
       }
 
-      const { id, username, tipo_usuario_id } = await Usuario.create(req.body);
+      const { id, username } = await Usuario.create(req.body);
       
-      return res.json({ id, username, tipo_usuario_id });
+      return res.json({ id, username });
    }
 
    async update(req, res){

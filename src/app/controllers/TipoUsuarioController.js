@@ -50,9 +50,9 @@ class TipoUsuarioController {
       const result = await TipoUsuario.destroy({where: { id: userTypeId }});
 
       if(result){
-         return res.json({ message: 'Successfully deleted.'});
+         return res.json({ message: 'Tipo de usuário deletado com sucesso'});
       } else {
-         return res.json({ message: 'Failed to delete.'});
+         return res.json({ message: 'Erro ao deleter tipo de usuário'});
       }      
    }
 }

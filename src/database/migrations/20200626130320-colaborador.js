@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.createTable('colaborador', 
-      { 
+      {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
@@ -28,12 +28,6 @@ module.exports = {
           allowNull: false,
           unique: true,
         },
-        endereco: {
-          type: Sequelize.STRING(128),
-          allowNull: false
-        },
-        numero: Sequelize.INTEGER,
-        bairro: Sequelize.STRING,
         created_at: {
           type: Sequelize.DATE,
           allowNull: false,

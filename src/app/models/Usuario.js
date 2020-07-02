@@ -11,8 +11,8 @@ class Usuario extends Model {
          },
          {
             sequelize,
-            modelName: 'usuario',
             underscored: true,
+            modelName: 'usuario'
          }
       );
       
