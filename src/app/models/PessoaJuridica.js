@@ -22,7 +22,7 @@ class PessoaJuridica extends Model {
 
       // Association between Cliente and PessoaJuridica
       // PessoaJuridica has the FK field
-      this.belongsTo(Cliente, {foreignKey: 'cliente_id'});
+      this.hasOne(Cliente, {foreignKey: 'cliente_id'});
    }
 }
 

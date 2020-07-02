@@ -19,7 +19,7 @@ class Fonte extends Model {
 
     // Associação entre Lead e Fontes
     // Lead carrega a FK
-    this.belongsTo(Lead, { foreignKey: 'fonte_id' });
+    this.hasMany(Lead, { foreignKey: 'fonte_id' });
   }
 }
 

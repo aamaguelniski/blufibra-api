@@ -1,7 +1,7 @@
 import Email from '../models/Email';
 
 class EmailController {
-    async store(req, res){
+    async store(req, res){        
         return res.json({ message: 'Em produção'});
     }
 

@@ -20,7 +20,8 @@ import TipoColaboradorController from './app/controllers/TipoColaboradorControll
 //IMPORTAÇÃO DE MIDDLEWARES
 //------------------------------------------------------------------------------
 import authMiddleware from './app/middlewares/auth';
-import userMiddleware from './app/middlewares/createUser';
+import LeadController from './app/controllers/LeadController';
+import FonteController from './app/controllers/FonteController';
 
 const routes = new Router();
 
@@ -35,6 +36,10 @@ routes.post('/tipousuario', TipoUsuarioController.store);
 routes.post('/tipocolaborador', TipoColaboradorController.store);
 // Colaborador
 routes.post('/colaborador', ColaboradorController.store);
+//lead
+routes.post('/leads', LeadController.store);
+//fonte
+routes.post('/fonte', FonteController.store);
 
 
 // Rotas com middleware de autenticação

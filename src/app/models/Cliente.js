@@ -21,7 +21,7 @@ class Cliente extends Model {
 
       // Association between Cliente and Usuario
       // Cliente has the FK field
-      this.belongsTo(Usuario, {foreignKey: 'usuario_id'});
+      this.hasOne(Usuario, {foreignKey: 'usuario_id'});
 
       // Association between Cliente and PessoaFisica
       // PessoaFisica has the FK field
