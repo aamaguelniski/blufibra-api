@@ -1,6 +1,7 @@
 import Sequelize, { Model } from "sequelize";
 import bcrypt from 'bcrypt';
 import Colaborador from "./Colaborador";
+import TipoUsuario from "./TipoUsuario";
 
 class Usuario extends Model {
    static init(sequelize){
@@ -22,7 +23,7 @@ class Usuario extends Model {
             user.password_hash = await bcrypt.hash(user.password, 8);
          }
       });
-      
+
       return this;
    }   
 

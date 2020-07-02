@@ -19,7 +19,7 @@ class TipoUsuario extends Model {
 
       // Association between Usuario and TipoUsuario
       // Usuario has the FK field
-      this.hasMany(Usuario, {foreignKey: 'tipo_usuario_id'});    
+      //this.hasMany(Usuario, {foreignKey: 'tipo_usuario_id'});    
    };   
 }
 

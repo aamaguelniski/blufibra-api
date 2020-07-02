@@ -14,6 +14,9 @@ class Equipamento extends Model {
             }
         );
 
+        //ASSOCIAÇÕES
+        //----------------------------------------------------------------------
+        
         // Associação entre Produto e Equipamento
         // Equipamento carrega a FK
         this.hasOne(Produto, { foreignKey: 'produto_id' });

@@ -17,7 +17,7 @@ class Cliente extends Model {
       );
 
       // ASSOCIATIONS
-      //----------------------------------------------------------
+      //------------------------------------------------------------------------
 
       // Association between Cliente and Usuario
       // Cliente has the FK field

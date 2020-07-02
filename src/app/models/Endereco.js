@@ -21,7 +21,7 @@ class Endereco extends Model {
       );
 
       // ASSOCIATIONS
-      //----------------------------------------------------------
+      //------------------------------------------------------------------------
 
       // Association between Cliente and Endereco
       // Endereco has the FK field

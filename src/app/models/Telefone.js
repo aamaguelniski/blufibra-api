@@ -14,8 +14,16 @@ class Telefone extends Model {
             underscored: true,
         });
 
-        this.belongsTo(Cliente, { foreignKey: 'cliente_id'});
-        this.belongsTo(TipoContato, { foreignKey: 'tipo_contato_id' });
+        //ASSOCIATIONS
+        //----------------------------------------------------------------------
+
+        //Associação entre Telefone e Cliente
+        //Telefone carrega a FK
+        this.hasOne(Cliente, { foreignKey: 'cliente_id'});
+
+        //Associação entre TipoContato e Telefone
+        //Telefone carrega a FK
+        this.hasOne(TipoContato, { foreignKey: 'tipo_contato_id' });
     }
 
 }

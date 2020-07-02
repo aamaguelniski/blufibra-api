@@ -22,6 +22,9 @@ import TipoColaboradorController from './app/controllers/TipoColaboradorControll
 import authMiddleware from './app/middlewares/auth';
 import LeadController from './app/controllers/LeadController';
 import FonteController from './app/controllers/FonteController';
+import OpportunityCotroller from './app/controllers/OpportunityCotroller';
+import EquipamentoController from './app/controllers/EquipamentoController';
+import ProdutoController from './app/controllers/ProdutoController';
 
 const routes = new Router();
 
@@ -40,6 +43,16 @@ routes.post('/colaborador', ColaboradorController.store);
 routes.post('/leads', LeadController.store);
 //fonte
 routes.post('/fonte', FonteController.store);
+
+//ROTAS EM PRODUÇÃO
+//INICIO------------------------------------------------------------------------
+//opportunity
+routes.post('/opportunity', OpportunityCotroller.store);
+//equipamento
+routes.post('/equipamento', EquipamentoController.store);
+//produto
+routes.post('/produto', ProdutoController.store);
+//FIM---------------------------------------------------------------------------
 
 
 // Rotas com middleware de autenticação

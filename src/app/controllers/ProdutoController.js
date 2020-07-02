@@ -1,6 +1,6 @@
-import Opportunity from '../models/Opportunity';
+import Produto from '../models/Produto';
 
-class OpportunityController {
+class ProdutoController {
     //QUERY FUNCTION
     async query(req, res){
         return res.json({ message: 'Em produção' });
@@ -28,4 +28,4 @@ class OpportunityController {
 
 }
 
-export default new OpportunityController();
+export default new ProdutoController();

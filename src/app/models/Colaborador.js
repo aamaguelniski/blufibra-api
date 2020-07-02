@@ -17,11 +17,11 @@ class Colaborador extends Model {
         );
 
         // ASSOCIAÇÕES
-        //-------------------------------------------------------
+        //----------------------------------------------------------------------
 
         // Associação entre Usuário e Colaborador
         // Colaborador carrega a FK
-        //this.hasOne(Usuario, { foreignKey: 'usuario_id' });
+        this.belongsTo(Usuario, { foreignKey: 'usuario_id' });
     }
 }
 

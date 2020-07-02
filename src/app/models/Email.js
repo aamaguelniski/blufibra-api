@@ -8,8 +8,7 @@ class Email extends Model {
             sequelize,
             modelName: 'email',
             underscored: true,
-        });        
-        
+        });
     }
 }
 

@@ -16,7 +16,7 @@ class Base extends Model {
         );
 
         // ASSOCIATIONS
-        //---------------------------------------------------------- //
+        //----------------------------------------------------------------------
 
         // Association between Bases and Clientes;
         // Clientes has the FK field

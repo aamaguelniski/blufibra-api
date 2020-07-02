@@ -11,7 +11,11 @@ class TipoContato extends Model {
             underscored: true,
         });
 
+        //ASSOCIATIONS
+        //----------------------------------------------------------------------
 
+        //Associação entre TipoContato e Email
+        //Email carrega a FK
         this.hasMany(Email, { foreignKey: 'tipo_contato_id' });
     }
 }
